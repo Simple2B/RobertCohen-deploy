@@ -218,7 +218,29 @@ Contents of files:
       }
    ```
 
+Configure certbot for certificates
 
+1. Update Package Manager:
+   ```bash
+   sudo yum update
+   ```
+
+2. Install Certbot:
+   ```bash
+   sudo yum install certbot
+   ```
+
+3. Install Certbot Nginx Plugin:
+   ```bash
+   sudo yum install python3-certbot-nginx
+   ```
+
+4. Obtain SSL Certificate:
+   ```bash
+   sudo certbot --nginx
+   ```
+
+! This command will guide you through the process of obtaining and installing SSL certificates for your Nginx setup. It will ask for your email address and domain name, and will handle the configuration of Nginx for SSL/TLS.
 
 
 ## Create compose.yaml file
