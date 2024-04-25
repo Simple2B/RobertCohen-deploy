@@ -105,6 +105,55 @@ Connect to EC2 instance via SSH
    sudo service nginx status
    ``` 
 
+<h2>Configure Docker & Docker-Compose in AWS EC2</h2>
+
+   Docker:
+   
+   ```bash
+   sudo yum install docker -y
+   ```
+   
+   ```bash
+   sudo service docker start
+   ```
+   
+   # make docker  autostart
+   ```bash
+   sudo chkconfig docker on
+   ```
+
+   ```bash
+   sudo reboot ## only if for you it is necessary
+   ```
+
+   Docker-Compose:
+
+   ## docker-compose (latest version)
+   ```bash
+   sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+   ```
+
+   ## Fix permissions after download
+   ```bash
+   sudo chmod +x /usr/local/bin/docker-compose
+   ```
+
+   #№ Verify success
+   ```bash
+   docker-compose version
+   ```
+
+   <h2>Then you need to go to the settings and make your configuration (Amazon Linux EC2)</h2>
+
+   ```bash
+   cd /etc/nginx/conf.d/
+   ```
+
+   and create a configuration file 
+   (in our case, these are three configuration files, that is, a file for the site itself - diemsondemand.conf, 
+   a file for the API - api.diemsondemand.conf, 
+   and a file for the admin panel - portal.diemsondemand.conf)
+
 
 ## Create compose.yaml file
 
