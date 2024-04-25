@@ -117,7 +117,7 @@ Connect to EC2 instance via SSH
    sudo service docker start
    ```
    
-   ## make docker  autostart
+   <h4>## make docker  autostart</h4>
    
    ```bash
    sudo chkconfig docker on
@@ -129,19 +129,19 @@ Connect to EC2 instance via SSH
 
    Docker-Compose:
 
-   ## docker-compose (latest version)
+   <h4>## docker-compose (latest version)</h4>
    
    ```bash
    sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
    ```
 
-   ## Fix permissions after download
+   <h4>## Fix permissions after download</h4>
    
    ```bash
    sudo chmod +x /usr/local/bin/docker-compose
    ```
    
-   ## Verify success
+   <h4>## Verify success</h4>
    
    ```bash
    docker-compose version
