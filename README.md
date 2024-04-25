@@ -7,7 +7,11 @@ You can sign up for a free tier account if you don’t already have an account w
 1. Login to AWS console. Initially Recently visited section will be blank.
 
 <img width="1009" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/f81c4087-67b1-4fa0-aaf6-081e795f3138">
-   
+
+2. Login to AWS console. Initially Recently visited section will be blank.
+
+![Initially Recently visited section will be blank!](/imgs/f81c4087-67b1-4fa0-aaf6-081e795f3138.png "AWS screen")
+
 3.
 
 ## Create compose.yaml file
