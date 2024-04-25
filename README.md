@@ -74,7 +74,7 @@ Connect to EC2 instance via SSH
    Step 4 — Run command ssh -i “ub-key-pair.pem” <address from you ssh client window>
    
 
-<h1>Installing NGINX on Amazon Linux EC2</h1>
+<h2>Installing NGINX on Amazon Linux EC2</h2>
 
 
 ## Create compose.yaml file
