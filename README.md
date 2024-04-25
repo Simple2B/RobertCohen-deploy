@@ -21,16 +21,16 @@ You can sign up for a free tier account if you don’t already have an account w
 <img width="858" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/3a91927e-f6d6-4685-91ed-2bf4a6dae1e9">
 
 5. Under the option Application and OS Images (Amazon Machine Image), select Amazon Linux as selected in the above image.
-   
+
 6.  Create a new key pair by clicking on the highlighted button “Create new key pair”
 
 <img width="782" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/ef3d0a57-4e61-47a2-8083-6a12be6b637c">
 
-Provide Key pair name — “ub-key-pair”
+Provide Key pair name — `userbook-keyvalue-pair`
 
 <img width="685" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/7da0f20c-66b0-4fbf-b7ab-44ff535dd3f2">
 
-Click on Create key pair. A file with the name `ub-key-pair.pem` will be downloaded to your system. 
+Click on Create key pair. A file with the name `userbook-keyvalue-pair.pem` will be downloaded to your system.
 !This file will be used later to connect this EC2 instance via SSH
 
 7. Change Network Settings — change settings as per the below image.
@@ -50,14 +50,16 @@ Alternatively, we can use EC2 -> Instances
 
 <img width="754" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/2ab54400-2757-4311-9b26-cffc418e817b">
 
-Now your instance is ready. It is time to connect to this instance. Connection to EC2 instance via SSH
+Now your instance is ready. It is time to connect to this instance.
+
+## Connection to EC2 instance via SSH
 
 1. Open the Instance summary by clicking on Instance ID
 
 <img width="868" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/828f60a7-4de2-48cb-aaa5-895df9771e1f">
 
 2. Click Connect (on the right) as shown above.
-   
+
 3. Connect to instance window will open with 4 tabs. Click the SSH client tab.
 
 <img width="617" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/cee00983-53a5-4845-a5a6-e69ec79f8ecd">
@@ -65,101 +67,78 @@ Now your instance is ready. It is time to connect to this instance. Connection t
 4. Perform the steps as mentioned in your SSH client tab.
 
    Step 1 — The SSH client in your machine can be a `terminal`, `cmd` (Windows command line), or any other tool like `putty`.
-   
+
    Step 2 — Go to the folder from the terminal where the .pem file was downloaded.
-   
+
    Step 3 — Run the command
 
    ```bash
-   chmod 400 ub-key-pair.pem
+   chmod 400 userbook-keyvalue-pair.pem
    ```
-   
-   Step 4 — Run command ssh -i “ub-key-pair.pem” <address from you ssh client window>
-   
 
-<h2>Installing NGINX on Amazon Linux EC2</h2>
-
-1. SSH to Amazon Linux EC2 Instance
+   Step 4 — Run command ssh -i userbook-keyvalue-pair.pem es2-user@`the-public-DNS-name`. It will be like:
 
    ```bash
-   ssh robert_cohen ##(host in config file)
+   ssh -i userbook-keyvalue-pair.pem ec2-user@userbook-instance.compute-1.amazoneaws.com
    ```
+
+## Installing required packages on Amazon Linux EC2
+
+1. Connect by SSH to Amazon Linux EC2 Instance (see the topic `Connection to EC2 instance via SSH`)
 
 2. Update Packages on Amazon Linux
 
    ```bash
    sudo yum update
+   sudo yum upgrade
    ```
 
 3. Install NGINX on Amazon Linux
 
    ```bash
    sudo yum install nginx
+   sudo service nginx enable
+   sudo chkconfig nginx on
    ```
 
-4. Test Installation Using Bash
-   Installation is done and let's do a small test to confirm that it is working.
+4. Install Docker:
 
-   ```bash
-   nginx -v
-   ```
-   
-   ```bash
-   sudo service nginx status
-   ``` 
-
-<h2>Configure Docker & Docker-Compose in AWS EC2</h2>
-
-   Docker:
-   
    ```bash
    sudo yum install docker -y
-   ```
-   
-   ```bash
+   sudo chkconfig docker on
    sudo service docker start
-   ```
-   
-   ```bash
-   sudo chkconfig docker on ## make docker  autostart
-   ```
-
-   ```bash
-   sudo reboot ## only if for you it is necessary
+   sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) \
+      -o /usr/local/bin/docker-compose
+   sudo chmod +x /usr/local/bin/docker-compose
    ```
 
-   Docker-Compose:
-   
-   ```bash
-   sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose   ## docker-compose (latest version)
-   ```
-   
-   ```bash
-   sudo chmod +x /usr/local/bin/docker-compose  ## Fix permissions after download
-   ```
-   
-   ```bash
-   docker-compose version  ## Verify success
-   ```
 
-   <h2>Then you need to go to the settings and make your configuration (Amazon Linux EC2)</h2>
+
+   ## Configure NGINX server
+
+   Here we create follow configuration files:
+   - /etc/nginx/conf.d/diemsondemand.conf - for base UI Web Interface
+   - /etc/nginx/conf.d/api.diemsondemand.conf - for Rest API
+   - /etc/nginx/conf.d/portal.diemsondemand.conf - for Web Portal
+
+   1. Connect by SSH to Amazon Linux EC2 Instance (see the topic `Connection to EC2 instance via SSH`)
+
+   2. Follow the instruction's steps:
+
+   Run commands
 
    ```bash
-   cd /etc/nginx/conf.d/
+   sudo su
+   cat > /etc/nginx/conf.d/diemsondemand.conf
    ```
 
-   and create a configuration file 
-   (in our case, these are three configuration files, that is, a file for the site itself - diemsondemand.conf, 
-   a file for the API - api.diemsondemand.conf, 
-   and a file for the admin panel - portal.diemsondemand.conf)
+   Press `<ENTER>`
 
-Contents of files: 
+   Copy-paste following text:
 
- 1. diemsondemand.conf
-
-    ```bash
+   ```nginx
        server {
-          server_name diemsondemand.com;  - * add your domain name
+          server_name diemsondemand.com;
               # Load configuration files for the default server block.
               include /etc/nginx/default.d/*.conf;
               location / {
@@ -177,11 +156,21 @@ Contents of files:
        }
     ```
 
-2. api.diemsondemand.conf
+   Press `<ENTER>` and key's combination `<Ctrl> + <D>`
 
-  ```bash
+   Run command:
+
+   ```bash
+   cat > /etc/nginx/conf.d/api.diemsondemand.conf
+   ```
+
+   Press `<ENTER>`
+
+   Copy-paste following text:
+
+  ```nginx
       server {
-          server_name api.diemsondemand.com;  - * add your domain name
+          server_name api.diemsondemand.com;
               # Load configuration files for the default server block.
               include /etc/nginx/default.d/*.conf;
               location / {
@@ -199,11 +188,21 @@ Contents of files:
       }
    ```
 
-3. portal.diemsondemand.conf
+   Press `<ENTER>` and key's combination `<Ctrl> + <D>`
+
+   Run command:
 
    ```bash
+   cat > /etc/nginx/conf.d/portal.diemsondemand.conf
+   ```
+
+   Press `<ENTER>`
+
+   Copy-paste following text:
+
+   ```nginx
       server {
-          server_name portal.diemsondemand.com; - * add your domain name
+          server_name portal.diemsondemand.com;
               # Load configuration files for the default server block.
               include /etc/nginx/default.d/*.conf;
               location / {
@@ -221,72 +220,87 @@ Contents of files:
       }
    ```
 
-Configure certbot for certificates
+   Press `<ENTER>` and key's combination `<Ctrl> + <D>`
 
-1. Update Package Manager:
+
+## Configure ```certbot``` for SSL certificates
+
+1. SSH to Amazon Linux EC2 Instance (see the topic `Connection to EC2 instance via SSH`)
+2. Copy and run follow commands
+
    ```bash
    sudo yum update
-   ```
-
-2. Install Certbot:
-   ```bash
    sudo yum install certbot
-   ```
-
-3. Install Certbot Nginx Plugin:
-   ```bash
    sudo yum install python3-certbot-nginx
    ```
 
-4. Obtain SSL Certificate:
+3. Obtain SSL Certificates:
+
+   Run command:
+
    ```bash
    sudo certbot --nginx
    ```
 
-! This command will guide you through the process of obtaining and installing SSL certificates for your Nginx setup. It will ask for your email address and domain name, and will handle the configuration of Nginx for SSL/TLS.
+> 💡 This command will guide you through the process of obtaining and installing SSL certificates for your Nginx setup.
+>    It will ask for your email address and domain name, and will handle the configuration of Nginx for SSL/TLS.
 
-<h2>The next step is to run the project on Amazon Linux EC 2</h2>
 
-```bash
-## Create compose.yaml file
-wget https://raw.githubusercontent.com/Simple2B/RobertCohen-deploy/main/compose.yaml 
-```
+## Configure Docker Compose
 
-```bash
-##  Create .env file  and add to .env file variables
-cat > .env
-read -p "Press Enter to pass variables"
-```
+1. Connect by SSH to Amazon Linux EC2 Instance (see the topic `Connection to EC2 instance via SSH`)
+2. Create `compose.yaml` file
 
-```bash
-# Email configuration
-MAIL_USERNAME=<sicret>
-MAIL_DEFAULT_SENDER=diemsondemand.info@gmail.com
-MAIL_PASSWORD=<sicret>
-MAIL_SERVER=email-smtp.eu-north-1.amazonaws.com
-MAIL_PORT=465
-MAIL_USE_TLS=false
-MAIL_USE_SSL=true
+   Run following commands:
 
-# Super admin
-ADMIN_USERNAME=simple2b
-ADMIN_EMAIL=simple2b.info@gmail.com
-ADMIN_PASSWORD=<sicret>
+   ```bash
+   cd
+   wget https://raw.githubusercontent.com/Simple2B/RobertCohen-deploy/main/compose.yaml
+   ```
 
-# Flask app
-NEXT_PUBLIC_LOGIN_URL=http://portal.diemsondemand.com/login
+3. Create `.env` file
 
-# Fast API
-NEXT_PUBLIC_API_URL=http://api.diemsondemand.com/
+   Run command:
 
-read -p "Press enter then Control + D to continue"
-```
+   ```bash
+   cat > .env
+   ```
 
-```bash
-docker-compose pull
-```
+   Press `<ENTER>`
 
-```bash
-docker-compose up -d
-```
+   Copy-paste following text:
 
+   ```
+   MAIL_USERNAME=<!secret!>
+   MAIL_DEFAULT_SENDER=diemsondemand.info@gmail.com
+   MAIL_PASSWORD=<!!secret!!>
+   MAIL_SERVER=email-smtp.eu-north-1.amazonaws.com
+   MAIL_PORT=465
+   MAIL_USE_TLS=false
+   MAIL_USE_SSL=true
+
+   ADMIN_USERNAME=simple2b
+   ADMIN_EMAIL=simple2b.info@gmail.com
+   ADMIN_PASSWORD=<!!!secret!!!>
+
+   NEXT_PUBLIC_LOGIN_URL=http://portal.diemsondemand.com/login
+
+   NEXT_PUBLIC_API_URL=http://api.diemsondemand.com/
+   ```
+
+   Press `<ENTER>` and key's combination `<Ctrl> + <D>`
+
+4. Start Docker Containers
+
+   Run commands:
+
+   ```bash
+   docker-compose pull
+   docker-compose up -d
+   sleep 5
+   docker-compose exec app flask create-admin
+   docker-compose exec app flask export-locations
+   docker-compose exec app flask export-services
+   ```
+
+That's All
