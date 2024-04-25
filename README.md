@@ -66,9 +66,13 @@ Connect to EC2 instance via SSH
 4. Perform the steps as mentioned in your SSH client tab.
 
    Step 1 — The SSH client in your machine can be terminal, command line or any other tool like putty.
+   
    Step 2 — Go to the folder from the terminal where the .pem file was downloaded.
+   
    Step 3 — Run command chmod 400 ub-key-pair.pem
+   
    Step 4 — Run command ssh -i “ub-key-pair.pem” <address from you ssh client window>
+   
 
 
 
