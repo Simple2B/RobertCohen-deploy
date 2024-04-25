@@ -95,12 +95,12 @@ Connect to EC2 instance via SSH
    ```
 
 4. Test Installation Using Bash
-
    Installation is done and let's do a small test to confirm that it is working.
 
-  ```bash
+   ```bash
    nginx -v
    ```
+   
    ```bash
    sudo service nginx status
    ``` 
