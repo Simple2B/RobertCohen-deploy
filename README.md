@@ -150,6 +150,76 @@ Connect to EC2 instance via SSH
    a file for the API - api.diemsondemand.conf, 
    and a file for the admin panel - portal.diemsondemand.conf)
 
+Contents of files: 
+
+ 1. diemsondemand.conf
+
+    ```bash
+       server {
+          server_name diemsondemand.com;  - * add your domain name
+              # Load configuration files for the default server block.
+              include /etc/nginx/default.d/*.conf;
+              location / {
+                  proxy_pass http://localhost:3000;
+                  proxy_set_header X-Real-IP  $remote_addr;
+                  proxy_set_header X-Forwarder-For $proxy_add_x_forwarded_for;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Original-URL $request_uri;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_http_version 1.1;
+                  proxy_set_header Upgrade $http_upgrade;
+                  proxy_buffering off;
+              }
+          listen 80;
+       }
+    ```
+
+2. api.diemsondemand.conf
+
+  ```bash
+      server {
+          server_name api.diemsondemand.com;  - * add your domain name
+              # Load configuration files for the default server block.
+              include /etc/nginx/default.d/*.conf;
+              location / {
+                  proxy_pass http://localhost:8002;
+                  proxy_set_header X-Real-IP  $remote_addr;
+                  proxy_set_header X-Forwarder-For $proxy_add_x_forwarded_for;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Original-URL $request_uri;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_http_version 1.1;
+                  proxy_set_header Upgrade $http_upgrade;
+                  proxy_buffering off;
+              }
+              listen 80;
+      }
+   ```
+
+3. portal.diemsondemand.conf
+
+   ```bash
+      server {
+          server_name portal.diemsondemand.com; - * add your domain name
+              # Load configuration files for the default server block.
+              include /etc/nginx/default.d/*.conf;
+              location / {
+                  proxy_pass http://localhost:8001;
+                  proxy_set_header X-Real-IP  $remote_addr;
+                  proxy_set_header X-Forwarder-For $proxy_add_x_forwarded_for;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Original-URL $request_uri;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_http_version 1.1;
+                  proxy_set_header Upgrade $http_upgrade;
+                  proxy_buffering off;
+              }
+          listen 80;
+      }
+   ```
+
+
+
 
 ## Create compose.yaml file
 
