@@ -38,7 +38,7 @@ Click on Create key pair. A file with the name `userbook-keyvalue-pair.pem` will
 
 <img width="635" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/0f6750a4-ecd1-4e6e-bdb1-84901dceb76b">
 
-8. Now click on Launch Instance(In Orange) at right bottom corner
+8. Now click on `Launch Instance` (In Orange) at right bottom corner
 
 <img width="659" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/e7c2f8d5-78cd-40fb-84f2-d50fdcc995af">
 
@@ -59,15 +59,15 @@ Now your instance is ready. It is time to connect to this instance.
 
 <img width="868" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/828f60a7-4de2-48cb-aaa5-895df9771e1f">
 
-2. Click Connect (on the right) as shown above.
+2. Click `Connect` (on the right) as shown above.
 
-3. Connect to instance window will open with 4 tabs. Click the SSH client tab.
+3. Connect to instance window will open with 4 tabs. Click the `SSH client` tab.
 
 <img width="617" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/cee00983-53a5-4845-a5a6-e69ec79f8ecd">
 
-4. Perform the steps as mentioned in your SSH client tab.
+4. Perform the steps as mentioned in your `SSH client` tab.
 
-   Step 1 — The SSH client in your machine can be a `terminal`, `cmd` (Windows command line), or any other tool like `putty`.
+   Step 1 — The `SSH client` in your machine can be a `terminal`, `cmd` (Windows command line), or any other tool like `putty`.
 
    Step 2 — Go to the folder from the terminal where the .pem file was downloaded.
 
@@ -77,13 +77,13 @@ Now your instance is ready. It is time to connect to this instance.
    chmod 400 userbook-keyvalue-pair.pem
    ```
 
-   Step 4 — Run command ssh -i userbook-keyvalue-pair.pem es2-user@`the-public-DNS-name`. It will be like:
+   Step 4 — Run command ssh. It will be like:
 
    ```bash
    ssh -i userbook-keyvalue-pair.pem ec2-user@userbook-instance.compute-1.amazoneaws.com
    ```
 
-## Installing required packages on Amazon Linux EC2
+## Install Required Packages on Amazon Linux EC2
 
 1. Connect by SSH to Amazon Linux EC2 Instance (see the topic `Connection to EC2 instance via SSH`)
 
@@ -98,7 +98,6 @@ Now your instance is ready. It is time to connect to this instance.
 
    ```bash
    sudo yum install nginx
-   sudo service nginx enable
    sudo chkconfig nginx on
    ```
 
@@ -122,9 +121,9 @@ Now your instance is ready. It is time to connect to this instance.
    - /etc/nginx/conf.d/api.diemsondemand.conf - for Rest API
    - /etc/nginx/conf.d/portal.diemsondemand.conf - for Web Portal
 
-   1. Connect by SSH to Amazon Linux EC2 Instance (see the topic `Connection to EC2 instance via SSH`)
+1. Connect by SSH to Amazon Linux EC2 Instance (see the topic `Connection to EC2 instance via SSH`)
 
-   2. Follow the instruction's steps:
+2. Follow the instruction's steps:
 
    Run commands
 
