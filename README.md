@@ -114,7 +114,7 @@ Now your instance is ready. It is time to connect to this instance.
 
 
 
-   ## Configure NGINX server
+## Configure NGINX server
 
    Here we create follow configuration files:
    - /etc/nginx/conf.d/diemsondemand.conf - for base UI Web Interface
