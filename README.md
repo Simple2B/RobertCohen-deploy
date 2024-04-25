@@ -76,6 +76,12 @@ Connect to EC2 instance via SSH
 
 <h2>Installing NGINX on Amazon Linux EC2</h2>
 
+1. SSH to Amazon Linux EC2 Instance
+
+   ```bash
+   ssh robert_cohen ##(host in config file)
+   ```
+
 
 ## Create compose.yaml file
 
