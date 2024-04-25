@@ -250,19 +250,17 @@ wget https://raw.githubusercontent.com/Simple2B/RobertCohen-deploy/main/compose.
 ```
 
 ```bash
-## Create .env file 
-echo > .env ## and press button Enter
-```
-
-```bash
-## add to .env file variables
+##  Create .env file  and add to .env file variables
 
 cat > .env
 
 ## then press Enter
 ## copy all the variables below and paste into the console,
 ## then press Enter again and after press Control + D
+read -p "Press enter to continue"
+```
 
+```bash
 # Email configuration
 MAIL_USERNAME=<sicret>
 MAIL_DEFAULT_SENDER=diemsondemand.info@gmail.com
@@ -282,6 +280,7 @@ NEXT_PUBLIC_LOGIN_URL=http://portal.diemsondemand.com/login
 
 # Fast API
 NEXT_PUBLIC_API_URL=http://api.diemsondemand.com/
+read -p "Press enter to continue"
 ```
 
 
