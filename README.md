@@ -6,7 +6,9 @@ You can sign up for a free tier account if you don’t already have an account w
 ## Creating EC2 Instance
 1. Login to AWS console. Initially Recently visited section will be blank.
 
-2.
+<img width="1009" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/f81c4087-67b1-4fa0-aaf6-081e795f3138">
+   
+3.
 
 ## Create compose.yaml file
 
