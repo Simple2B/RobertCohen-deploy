@@ -244,16 +244,15 @@ Configure certbot for certificates
 
 <h2>The next step is to run the project on Amazon Linux EC 2</h2>
 
+
+      ## Create compose.yaml file
 ```bash
-## Create compose.yaml file
 wget https://raw.githubusercontent.com/Simple2B/RobertCohen-deploy/main/compose.yaml 
 ```
 
+      ##  Create .env file  and add to .env file variables
 ```bash
-##  Create .env file  and add to .env file variables
-
 cat > .env
-
 read -p "Press Enter to pass variables"
 ```
 
