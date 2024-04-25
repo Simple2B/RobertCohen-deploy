@@ -117,10 +117,8 @@ Connect to EC2 instance via SSH
    sudo service docker start
    ```
    
-   <h4>## make docker  autostart</h4>
-   
    ```bash
-   sudo chkconfig docker on
+   sudo chkconfig docker on ## make docker  autostart
    ```
 
    ```bash
@@ -128,23 +126,17 @@ Connect to EC2 instance via SSH
    ```
 
    Docker-Compose:
-
-   <h4>## docker-compose (latest version)</h4>
    
    ```bash
-   sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
-   ```
-
-   <h4>## Fix permissions after download</h4>
-   
-   ```bash
-   sudo chmod +x /usr/local/bin/docker-compose
+   sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose   ## docker-compose (latest version)
    ```
    
-   <h4>## Verify success</h4>
+   ```bash
+   sudo chmod +x /usr/local/bin/docker-compose  ## Fix permissions after download
+   ```
    
    ```bash
-   docker-compose version
+   docker-compose version  ## Verify success
    ```
 
    <h2>Then you need to go to the settings and make your configuration (Amazon Linux EC2)</h2>
