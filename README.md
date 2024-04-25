@@ -109,39 +109,39 @@ Connect to EC2 instance via SSH
 
    Docker:
    
-   ```bash
-   sudo yum install docker -y
-   ```
+      ```bash
+      sudo yum install docker -y
+      ```
+      
+      ```bash
+      sudo service docker start
+      ```
    
-   ```bash
-   sudo service docker start
-   ```
-   
-   # make docker  autostart
-   ```bash
-   sudo chkconfig docker on
-   ```
+      ## make docker  autostart
+      ```bash
+      sudo chkconfig docker on
+      ```
 
-   ```bash
-   sudo reboot ## only if for you it is necessary
-   ```
+      ```bash
+      sudo reboot ## only if for you it is necessary
+      ```
 
    Docker-Compose:
 
-   ## docker-compose (latest version)
-   ```bash
-   sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
-   ```
+      ## docker-compose (latest version)
+      ```bash
+      sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+      ```
 
-   ## Fix permissions after download
-   ```bash
-   sudo chmod +x /usr/local/bin/docker-compose
-   ```
-
-   ## Verify success
-   ```bash
-   docker-compose version
-   ```
+      ## Fix permissions after download
+      ```bash
+      sudo chmod +x /usr/local/bin/docker-compose
+      ```
+   
+      ## Verify success
+      ```bash
+      docker-compose version
+      ```
 
    <h2>Then you need to go to the settings and make your configuration (Amazon Linux EC2)</h2>
 
