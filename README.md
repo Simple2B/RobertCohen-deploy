@@ -23,7 +23,7 @@ You can sign up for a free tier account if you don’t already have an account w
 
 5. Under the option `Application and OS Images (Amazon Machine Image)`, select `Amazon Linux` as selected in the above image.
 
-6.  Create a new key pair by clicking on the highlighted button “Create new key pair”
+6.  Create a new key-pair by clicking on the highlighted button `Create new key pair`
 
 <img width="782" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/ef3d0a57-4e61-47a2-8083-6a12be6b637c">
 
@@ -32,7 +32,7 @@ Provide Key pair name — `userbook-keyvalue-pair`
 <img width="685" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/7da0f20c-66b0-4fbf-b7ab-44ff535dd3f2">
 
 Click on Create key pair. A file with the name `userbook-keyvalue-pair.pem` will be downloaded to your system.
-!This file will be used later to connect this EC2 instance via SSH
+> 💡 This file will be used later to connect this EC2 instance via SSH
 
 7. Change Network Settings — change settings as per the below image.
 
