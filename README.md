@@ -4,11 +4,12 @@
 You can sign up for a free tier account if you don’t already have an account with AWS. AWS provides a free tier for 12 months for certain types of services and EC2 instances.
 
 ## Creating EC2 Instance
-1. Login to the AWS console. Initially Recently visited section will be blank.
+
+1. Login to the AWS console. `Initially Recently` visited section will be blank.
 
 <img width="1009" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/f81c4087-67b1-4fa0-aaf6-081e795f3138">
 
-2. Go to Search bar and type EC2, Select the EC2 from available options as selected here -
+2. Go to 🔍`Search bar` and type `EC2`, Select the `EC2` from available options as selected here:
 
 <img width="875" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/eb723cb4-bdd0-455f-8666-f35da3c76b43">
 
@@ -16,11 +17,11 @@ You can sign up for a free tier account if you don’t already have an account w
 
 <img width="856" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/0bbe832b-f6f3-4c65-a5a3-36c56983738d">
 
-4. Provide a name for instance — “userbook-app-instance”
+4. Provide a name for e.g.: `userbook-app-instance`
 
 <img width="858" alt="image" src="https://github.com/Simple2B/RobertCohen-deploy/assets/63252239/3a91927e-f6d6-4685-91ed-2bf4a6dae1e9">
 
-5. Under the option Application and OS Images (Amazon Machine Image), select Amazon Linux as selected in the above image.
+5. Under the option `Application and OS Images (Amazon Machine Image)`, select `Amazon Linux` as selected in the above image.
 
 6.  Create a new key pair by clicking on the highlighted button “Create new key pair”
 
