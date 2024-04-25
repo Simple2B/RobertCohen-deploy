@@ -138,7 +138,7 @@ Connect to EC2 instance via SSH
    sudo chmod +x /usr/local/bin/docker-compose
    ```
 
-   #№ Verify success
+   ## Verify success
    ```bash
    docker-compose version
    ```
