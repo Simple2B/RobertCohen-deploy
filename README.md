@@ -279,4 +279,11 @@ NEXT_PUBLIC_API_URL=http://api.diemsondemand.com/
 read -p "Press enter then Control + D to continue"
 ```
 
+```bash
+docker-compose pull
+```
+
+```bash
+docker-compose up -d
+```
 
