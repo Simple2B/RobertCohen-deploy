@@ -82,6 +82,29 @@ Connect to EC2 instance via SSH
    ssh robert_cohen ##(host in config file)
    ```
 
+2. Update Packages on Amazon Linux
+
+   ```bash
+   sudo yum update
+   ```
+
+3. Install NGINX on Amazon Linux
+
+   ```bash
+   sudo yum install nginx
+   ```
+
+4. Test Installation Using Bash
+
+   Installation is done and let's do a small test to confirm that it is working.
+
+  ```bash
+   nginx -v
+   ```
+   ```bash
+   sudo service nginx status
+   ``` 
+
 
 ## Create compose.yaml file
 
