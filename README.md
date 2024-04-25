@@ -242,9 +242,46 @@ Configure certbot for certificates
 
 ! This command will guide you through the process of obtaining and installing SSL certificates for your Nginx setup. It will ask for your email address and domain name, and will handle the configuration of Nginx for SSL/TLS.
 
-
-## Create compose.yaml file
+<h2>The next step is to run the project on Amazon Linux EC 2</h2>
 
 ```bash
-wget https://raw.githubusercontent.com/Simple2B/RobertCohen-deploy/main/compose.yaml
+## Create compose.yaml file
+wget https://raw.githubusercontent.com/Simple2B/RobertCohen-deploy/main/compose.yaml 
 ```
+
+```bash
+## Create .env file 
+echo > .env ## and press button Enter
+```
+
+```bash
+## add to .env file variables
+
+cat > .env
+
+## then press Enter
+## copy all the variables below and paste into the console,
+## then press Enter again and after press Control + D
+
+# Email configuration
+MAIL_USERNAME=<sicret>
+MAIL_DEFAULT_SENDER=diemsondemand.info@gmail.com
+MAIL_PASSWORD=<sicret>
+MAIL_SERVER=email-smtp.eu-north-1.amazonaws.com
+MAIL_PORT=465
+MAIL_USE_TLS=false
+MAIL_USE_SSL=true
+
+# Super admin
+ADMIN_USERNAME=simple2b
+ADMIN_EMAIL=simple2b.info@gmail.com
+ADMIN_PASSWORD=<sicret>
+
+# Flask app
+NEXT_PUBLIC_LOGIN_URL=http://portal.diemsondemand.com/login
+
+# Fast API
+NEXT_PUBLIC_API_URL=http://api.diemsondemand.com/
+```
+
+
