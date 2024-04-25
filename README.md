@@ -254,10 +254,7 @@ wget https://raw.githubusercontent.com/Simple2B/RobertCohen-deploy/main/compose.
 
 cat > .env
 
-## then press Enter
-## copy all the variables below and paste into the console,
-## then press Enter again and after press Control + D
-read -p "Press enter to continue"
+read -p "Press Enter to pass variables"
 ```
 
 ```bash
@@ -280,7 +277,8 @@ NEXT_PUBLIC_LOGIN_URL=http://portal.diemsondemand.com/login
 
 # Fast API
 NEXT_PUBLIC_API_URL=http://api.diemsondemand.com/
-read -p "Press enter to continue"
+
+read -p "Press enter then Control + D to continue"
 ```
 
 
