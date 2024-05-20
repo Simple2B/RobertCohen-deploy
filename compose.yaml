@@ -13,7 +13,7 @@ services:
       PGUSER: postgres
 
   app:
-    image: simple2b/robert-cohen-backend:0.0
+    image: simple2b/robert-cohen-backend:2.0
     restart: always
     command: sh ./start_web.sh
     environment:
@@ -28,7 +28,7 @@ services:
       - 127.0.0.1:8001:8000
 
   api:
-    image: simple2b/robert-cohen-backend:0.0
+    image: simple2b/robert-cohen-backend:2.0
     restart: always
     command: sh ./start_api.sh
     environment:
@@ -43,7 +43,7 @@ services:
       - 127.0.0.1:8002:8000
 
   front:
-    image: simple2b/robert-cohen-front-prod:1.0
+    image: simple2b/robert-cohen-front-prod:1.1
     restart: always
     env_file:
       - .env
