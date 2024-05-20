@@ -43,7 +43,7 @@ services:
       - 127.0.0.1:8002:8000
 
   front:
-    image: simple2b/robert-cohen-front:1.0
+    image: simple2b/robert-cohen-front-prod:1.0
     restart: always
     env_file:
       - .env
